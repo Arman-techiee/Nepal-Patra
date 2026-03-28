@@ -194,10 +194,9 @@ export default function Header({
         {menuOpen && (
           <div className="md:hidden pb-4 border-t border-surface-200 dark:border-ink-700 animate-fade-in">
             <div className="grid grid-cols-3 gap-2 pt-3">
-              {CATEGORIES.map((cat) => (
-                (() => {
-                  const Icon = cat.icon;
-                  return (
+              {CATEGORIES.map((cat) => {
+                const Icon = cat.icon;
+                return (
                 <button
                   key={cat.value}
                   onClick={() => {
@@ -214,9 +213,8 @@ export default function Header({
                   <Icon className="w-4 h-4" strokeWidth={2} />
                   <span>{cat.label}</span>
                 </button>
-                  );
-                })()
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -226,10 +224,9 @@ export default function Header({
       <nav className="hidden md:block border-t border-surface-200 dark:border-ink-700">
         <div className="max-w-screen-xl mx-auto px-6">
           <div className="flex items-center gap-1 overflow-x-auto no-scrollbar">
-            {CATEGORIES.map((cat) => (
-              (() => {
-                const Icon = cat.icon;
-                return (
+            {CATEGORIES.map((cat) => {
+              const Icon = cat.icon;
+              return (
               <button
                 key={cat.value}
                 onClick={() => { setCategory(cat.value); setActiveTab("home"); }}
@@ -242,9 +239,8 @@ export default function Header({
                 <Icon className="w-4 h-4" strokeWidth={2} />
                 {cat.label}
               </button>
-                );
-              })()
-            ))}
+              );
+            })}
           </div>
         </div>
       </nav>

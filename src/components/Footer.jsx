@@ -1,4 +1,12 @@
-import { Facebook, Github, Linkedin, Mail, Newspaper, Twitter, Youtube } from "lucide-react";
+import {
+  AtSign,
+  BriefcaseBusiness,
+  CirclePlay,
+  FolderGit2,
+  Globe2,
+  Mail,
+  Newspaper,
+} from "lucide-react";
 import { CATEGORIES } from "../utils/helpers";
 
 export default function Footer({ setCategory }) {
@@ -26,10 +34,10 @@ export default function Footer({ setCategory }) {
             {/* Social links */}
             <div className="flex gap-3 mt-5">
               {[
-                { label: "X", href: "https://x.com", icon: Twitter },
-                { label: "Facebook", href: "https://facebook.com", icon: Facebook },
-                { label: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
-                { label: "YouTube", href: "https://youtube.com", icon: Youtube },
+                { label: "X", href: "https://x.com", icon: AtSign },
+                { label: "Facebook", href: "https://facebook.com", icon: Globe2 },
+                { label: "LinkedIn", href: "https://linkedin.com", icon: BriefcaseBusiness },
+                { label: "YouTube", href: "https://youtube.com", icon: CirclePlay },
               ].map((item) => {
                 const Icon = item.icon;
                 return (
@@ -106,7 +114,7 @@ export default function Footer({ setCategory }) {
               rel="noopener noreferrer"
               className="hover:text-white transition-colors inline-flex items-center gap-1.5"
             >
-              <Github className="w-3.5 h-3.5" strokeWidth={2} />
+              <FolderGit2 className="w-3.5 h-3.5" strokeWidth={2} />
               GitHub
             </a>
             <a

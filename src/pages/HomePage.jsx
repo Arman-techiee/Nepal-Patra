@@ -75,13 +75,14 @@ export default function HomePage({
         )}
       </div>
 
-      {/* Error */}
-      {error && <ErrorState message={error} onRetry={retry} />}
-
-      {!error && (
-        <div className="lg:grid lg:grid-cols-[1fr_320px] lg:gap-8">
-          {/* Main content */}
-          <div>
+      <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-[1fr_320px] lg:gap-8">
+        {/* Main content */}
+        <div>
+          {/* Error */}
+          {error ? (
+            <ErrorState message={error} onRetry={retry} />
+          ) : (
+            <>
             {/* Featured article */}
             {loading ? (
               <div className="mb-8">
@@ -201,20 +202,31 @@ export default function HomePage({
                 )}
               </section>
             )}
-          </div>
+            </>
+          )}
+        </div>
 
-          {/* Sidebar */}
-          <div className="hidden lg:block">
-            <div className="sticky top-32">
-              <Sidebar
-                trending={trending}
-                loading={loading}
-                onSearch={onSearchTopic}
-              />
-            </div>
+        {/* Mobile time widget */}
+        <div className="lg:hidden">
+          <Sidebar
+            trending={trending}
+            loading={loading}
+            onSearch={onSearchTopic}
+            timeOnly
+          />
+        </div>
+
+        {/* Sidebar */}
+        <div className="hidden lg:block">
+          <div className="sticky top-32">
+            <Sidebar
+              trending={trending}
+              loading={loading}
+              onSearch={onSearchTopic}
+            />
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
