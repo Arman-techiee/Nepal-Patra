@@ -2,6 +2,8 @@
 
 A professional, feature-rich Nepal-focused news aggregator built with React, Vite, Axios, and Tailwind CSS.
 
+Repository: [github.com/Arman-techiee/Nepal-Patra.git](https://github.com/Arman-techiee/Nepal-Patra.git)
+
 ---
 
 ## ✨ Features

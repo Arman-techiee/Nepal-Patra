@@ -7,7 +7,7 @@ export default function Footer({ setCategory }) {
     <footer className="bg-ink-900 text-white mt-20">
       {/* Top section */}
       <div className="max-w-screen-xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
@@ -66,23 +66,6 @@ export default function Footer({ setCategory }) {
             </ul>
           </div>
 
-          {/* Newsletter */}
-          <div>
-            <h4 className="font-heading tracking-widest text-sm text-brand-gold mb-4">NEWSLETTER</h4>
-            <p className="text-white/50 text-sm mb-4">
-              Get the top Nepal Patra stories delivered to your inbox every morning.
-            </p>
-            <div className="flex flex-col gap-2">
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-brand-red transition-colors"
-              />
-              <button className="bg-brand-red hover:bg-brand-red-dark text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors">
-                Subscribe Free
-              </button>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -102,9 +85,20 @@ export default function Footer({ setCategory }) {
             </a>
           </div>
           <div className="flex gap-4">
-            <span className="hover:text-white transition-colors cursor-pointer">Privacy</span>
-            <span className="hover:text-white transition-colors cursor-pointer">Terms</span>
-            <span className="hover:text-white transition-colors cursor-pointer">Contact</span>
+            <a
+              href="https://github.com/Arman-techiee/Nepal-Patra.git"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="mailto:arman.techiee@gmail.com"
+              className="hover:text-white transition-colors"
+            >
+              arman.techiee@gmail.com
+            </a>
           </div>
         </div>
       </div>
