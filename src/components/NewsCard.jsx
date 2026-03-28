@@ -1,4 +1,5 @@
 import { timeAgo, getDomain, getCategoryStyle, getCategoryLabel } from "../utils/helpers";
+import { Bookmark, Globe2, ImageOff } from "lucide-react";
 
 export default function NewsCard({ article, index, onBookmark, isBookmarked, variant = "default" }) {
   if (!article) return null;
@@ -58,7 +59,7 @@ export default function NewsCard({ article, index, onBookmark, isBookmarked, var
             className="w-full h-full bg-gradient-to-br from-brand-blue to-brand-red flex items-center justify-center"
             style={{ display: article.image_url ? "none" : "flex" }}
           >
-            <span className="text-5xl opacity-20">🏔️</span>
+            <ImageOff className="w-12 h-12 text-white/25" strokeWidth={1.8} />
           </div>
         </div>
 
@@ -79,9 +80,7 @@ export default function NewsCard({ article, index, onBookmark, isBookmarked, var
               : "bg-black/30 text-white hover:bg-black/50"
           }`}
         >
-          <svg className="w-3.5 h-3.5" fill={bookmarked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-          </svg>
+          <Bookmark className="w-3.5 h-3.5" strokeWidth={2} fill={bookmarked ? "currentColor" : "none"} />
         </button>
       </div>
 
@@ -102,7 +101,7 @@ export default function NewsCard({ article, index, onBookmark, isBookmarked, var
         <div className="flex items-center justify-between mt-auto pt-3 border-t border-surface-200 dark:border-ink-700">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-full bg-surface-200 dark:bg-surface-900 flex items-center justify-center text-xs">
-              📰
+              <Globe2 className="w-3.5 h-3.5 text-ink-500 dark:text-ink-300" strokeWidth={2} />
             </div>
             <span className="text-xs text-ink-400 font-medium truncate max-w-[120px]">
               {getDomain(article.url)}

@@ -1,3 +1,4 @@
+import { Facebook, Github, Linkedin, Mail, Newspaper, Twitter, Youtube } from "lucide-react";
 import { CATEGORIES } from "../utils/helpers";
 
 export default function Footer({ setCategory }) {
@@ -11,7 +12,9 @@ export default function Footer({ setCategory }) {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-3xl">🇳🇵</span>
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-brand-gold">
+                <Newspaper className="w-5 h-5" strokeWidth={2.2} />
+              </div>
                 <div>
                 <div className="font-heading text-2xl text-white tracking-widest">NEPAL PATRA</div>
                 <div className="font-display italic text-white/40 text-xs">The Voice of Nepal</div>
@@ -22,14 +25,26 @@ export default function Footer({ setCategory }) {
             </p>
             {/* Social links */}
             <div className="flex gap-3 mt-5">
-              {["𝕏", "f", "in", "▶"].map((icon) => (
-                <button
-                  key={icon}
+              {[
+                { label: "X", href: "https://x.com", icon: Twitter },
+                { label: "Facebook", href: "https://facebook.com", icon: Facebook },
+                { label: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
+                { label: "YouTube", href: "https://youtube.com", icon: Youtube },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
                   className="w-8 h-8 rounded-full bg-white/10 hover:bg-brand-red transition-colors flex items-center justify-center text-sm font-bold"
                 >
-                  {icon}
-                </button>
-              ))}
+                  <Icon className="w-4 h-4" strokeWidth={2} />
+                </a>
+                );
+              })}
             </div>
           </div>
 
@@ -89,14 +104,16 @@ export default function Footer({ setCategory }) {
               href="https://github.com/Arman-techiee/Nepal-Patra.git"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-white transition-colors inline-flex items-center gap-1.5"
             >
+              <Github className="w-3.5 h-3.5" strokeWidth={2} />
               GitHub
             </a>
             <a
               href="mailto:arman.techiee@gmail.com"
-              className="hover:text-white transition-colors"
+              className="hover:text-white transition-colors inline-flex items-center gap-1.5"
             >
+              <Mail className="w-3.5 h-3.5" strokeWidth={2} />
               arman.techiee@gmail.com
             </a>
           </div>

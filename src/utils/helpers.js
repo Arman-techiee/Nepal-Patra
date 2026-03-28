@@ -1,4 +1,16 @@
 import { formatDistanceToNow, parseISO, format } from "date-fns";
+import {
+  Mountain,
+  Globe2,
+  Landmark,
+  ChartColumnIncreasing,
+  LaptopMinimal,
+  Trophy,
+  HeartPulse,
+  FlaskConical,
+  Clapperboard,
+  Plane,
+} from "lucide-react";
 
 export function timeAgo(dateStr) {
   if (!dateStr) return "";
@@ -41,16 +53,16 @@ export function truncate(str, n) {
 }
 
 export const CATEGORIES = [
-  { label: "Top Stories", value: "", icon: "🏔️" },
-  { label: "World", value: "world", icon: "🌍" },
-  { label: "Politics", value: "politics", icon: "🏛️" },
-  { label: "Business", value: "business", icon: "📈" },
-  { label: "Technology", value: "tech", icon: "💻" },
-  { label: "Sports", value: "sports", icon: "⚽" },
-  { label: "Health", value: "health", icon: "🏥" },
-  { label: "Science", value: "science", icon: "🔬" },
-  { label: "Entertainment", value: "entertainment", icon: "🎭" },
-  { label: "Travel", value: "travel", icon: "✈️" },
+  { label: "Top Stories", value: "", icon: Mountain },
+  { label: "World", value: "world", icon: Globe2 },
+  { label: "Politics", value: "politics", icon: Landmark },
+  { label: "Business", value: "business", icon: ChartColumnIncreasing },
+  { label: "Technology", value: "tech", icon: LaptopMinimal },
+  { label: "Sports", value: "sports", icon: Trophy },
+  { label: "Health", value: "health", icon: HeartPulse },
+  { label: "Science", value: "science", icon: FlaskConical },
+  { label: "Entertainment", value: "entertainment", icon: Clapperboard },
+  { label: "Travel", value: "travel", icon: Plane },
 ];
 
 export const CATEGORY_STYLES = {

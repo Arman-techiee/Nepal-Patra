@@ -1,4 +1,5 @@
 import useNews, { useWorldNews } from "../hooks/useNews";
+import { ChevronDown, Globe2, LoaderCircle } from "lucide-react";
 import FeaturedCard from "../components/FeaturedCard";
 import NewsCard from "../components/NewsCard";
 import Sidebar from "../components/Sidebar";
@@ -35,6 +36,7 @@ export default function HomePage({
   } = useWorldNews();
 
   const catInfo = CATEGORIES.find((c) => c.value === category) || CATEGORIES[0];
+  const CategoryIcon = catInfo.icon;
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-8">
@@ -60,9 +62,7 @@ export default function HomePage({
           </div>
         ) : (
           <div className="section-divider">
-            <span className="text-lg">
-              {catInfo.icon}
-            </span>
+            <CategoryIcon className="w-5 h-5 text-brand-red" strokeWidth={2} />
             <span className="text-sm font-semibold uppercase tracking-widest text-brand-red">
               {catInfo.label}
             </span>
@@ -148,18 +148,13 @@ export default function HomePage({
                 >
                   {loadingMore ? (
                     <>
-                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
-                      </svg>
+                      <LoaderCircle className="animate-spin h-4 w-4" strokeWidth={2} />
                       Loading more stories…
                     </>
                   ) : (
                     <>
                       Load More Stories
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
+                      <ChevronDown className="w-4 h-4" strokeWidth={2} />
                     </>
                   )}
                 </button>
@@ -177,7 +172,7 @@ export default function HomePage({
             {!search && !category && (
               <section className="mt-16">
                 <div className="section-divider mb-5">
-                  <span className="text-lg">🌍</span>
+                  <Globe2 className="w-5 h-5 text-brand-red" strokeWidth={2} />
                   <span className="text-sm font-semibold uppercase tracking-widest text-brand-red">
                     World
                   </span>

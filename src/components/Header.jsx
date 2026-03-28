@@ -1,4 +1,13 @@
 import { useState, useEffect, useRef } from "react";
+import {
+  Search,
+  Bookmark,
+  Moon,
+  Sun,
+  Menu,
+  X,
+  Newspaper,
+} from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { CATEGORIES } from "../utils/helpers";
 
@@ -74,8 +83,8 @@ export default function Header({
             onClick={() => { setCategory(""); setSearch(""); setSearchVal(""); setActiveTab("home"); }}
             className="flex items-center gap-2 group flex-shrink-0"
           >
-            <div className="relative">
-              <span className="text-2xl">🇳🇵</span>
+            <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-brand-red/10 text-brand-red">
+              <Newspaper className="w-5 h-5" strokeWidth={2.2} />
             </div>
             <div className="leading-none">
               <div className="font-heading text-3xl text-brand-red tracking-wide group-hover:text-brand-red-dark transition-colors">
@@ -104,7 +113,7 @@ export default function Header({
                 type="submit"
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-400 hover:text-brand-red transition-colors"
               >
-                <SearchIcon />
+                <Search className="w-5 h-5" strokeWidth={2} />
               </button>
             </div>
           </form>
@@ -116,7 +125,7 @@ export default function Header({
               onClick={() => setMobileSearch((v) => !v)}
               className="md:hidden p-2 rounded-full hover:bg-surface-100 dark:hover:bg-surface-900 transition-colors text-ink-500"
             >
-              <SearchIcon />
+              <Search className="w-5 h-5" strokeWidth={2} />
             </button>
 
             {/* Bookmarks */}
@@ -128,7 +137,11 @@ export default function Header({
                   : "hover:bg-surface-100 dark:hover:bg-surface-900 text-ink-500"
               }`}
             >
-              <BookmarkIcon filled={activeTab === "bookmarks"} />
+              <Bookmark
+                className="w-5 h-5"
+                strokeWidth={2}
+                fill={activeTab === "bookmarks" ? "currentColor" : "none"}
+              />
               {bookmarkCount > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 bg-brand-gold text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                   {bookmarkCount > 9 ? "9+" : bookmarkCount}
@@ -142,7 +155,7 @@ export default function Header({
               className="p-2 rounded-full hover:bg-surface-100 dark:hover:bg-surface-900 transition-colors text-ink-500 dark:text-ink-300"
               aria-label="Toggle dark mode"
             >
-              {dark ? <SunIcon /> : <MoonIcon />}
+              {dark ? <Sun className="w-5 h-5" strokeWidth={2} /> : <Moon className="w-5 h-5" strokeWidth={2} />}
             </button>
 
             {/* Mobile menu */}
@@ -150,7 +163,7 @@ export default function Header({
               onClick={() => setMenuOpen((v) => !v)}
               className="md:hidden p-2 rounded-full hover:bg-surface-100 transition-colors text-ink-500"
             >
-              <MenuIcon open={menuOpen} />
+              {menuOpen ? <X className="w-5 h-5" strokeWidth={2} /> : <Menu className="w-5 h-5" strokeWidth={2} />}
             </button>
           </div>
         </div>
@@ -171,7 +184,7 @@ export default function Header({
                 className="w-full pl-4 pr-10 py-2.5 text-sm rounded-full border border-surface-200 dark:border-ink-700 bg-surface-100 dark:bg-surface-900 text-ink-900 dark:text-ink-100 placeholder-ink-300 focus:outline-none focus:ring-2 focus:ring-brand-red/40"
               />
               <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-400">
-                <SearchIcon />
+                <Search className="w-5 h-5" strokeWidth={2} />
               </button>
             </div>
           </form>
@@ -182,6 +195,9 @@ export default function Header({
           <div className="md:hidden pb-4 border-t border-surface-200 dark:border-ink-700 animate-fade-in">
             <div className="grid grid-cols-3 gap-2 pt-3">
               {CATEGORIES.map((cat) => (
+                (() => {
+                  const Icon = cat.icon;
+                  return (
                 <button
                   key={cat.value}
                   onClick={() => {
@@ -195,9 +211,11 @@ export default function Header({
                       : "bg-surface-100 dark:bg-surface-900 text-ink-700 dark:text-ink-300 hover:bg-surface-200"
                   }`}
                 >
-                  <span>{cat.icon}</span>
+                  <Icon className="w-4 h-4" strokeWidth={2} />
                   <span>{cat.label}</span>
                 </button>
+                  );
+                })()
               ))}
             </div>
           </div>
@@ -209,6 +227,9 @@ export default function Header({
         <div className="max-w-screen-xl mx-auto px-6">
           <div className="flex items-center gap-1 overflow-x-auto no-scrollbar">
             {CATEGORIES.map((cat) => (
+              (() => {
+                const Icon = cat.icon;
+                return (
               <button
                 key={cat.value}
                 onClick={() => { setCategory(cat.value); setActiveTab("home"); }}
@@ -218,58 +239,15 @@ export default function Header({
                     : "border-transparent text-ink-500 dark:text-ink-300 hover:text-brand-red hover:border-brand-red/40"
                 }`}
               >
-                <span className="text-base">{cat.icon}</span>
+                <Icon className="w-4 h-4" strokeWidth={2} />
                 {cat.label}
               </button>
+                );
+              })()
             ))}
           </div>
         </div>
       </nav>
     </header>
-  );
-}
-
-// Icons
-function SearchIcon() {
-  return (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-    </svg>
-  );
-}
-
-function BookmarkIcon({ filled }) {
-  return (
-    <svg className="w-5 h-5" fill={filled ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-    </svg>
-  );
-}
-
-function MoonIcon() {
-  return (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-    </svg>
-  );
-}
-
-function SunIcon() {
-  return (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-    </svg>
-  );
-}
-
-function MenuIcon({ open }) {
-  return open ? (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  ) : (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
   );
 }

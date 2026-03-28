@@ -1,4 +1,13 @@
 import { timeAgo } from "../utils/helpers";
+import {
+  CloudSun,
+  Droplets,
+  Flame,
+  Tags,
+  Newspaper,
+  Mountain,
+  Languages,
+} from "lucide-react";
 import { SkeletonCompact } from "./SkeletonCard";
 
 export default function Sidebar({ trending, loading, onSearch }) {
@@ -30,8 +39,14 @@ export default function Sidebar({ trending, loading, onSearch }) {
           <p className="font-heading text-5xl tracking-wider">{nepalTime}</p>
           <p className="text-xs opacity-60 mt-1">{nepalDate}</p>
           <div className="mt-3 pt-3 border-t border-white/20 grid grid-cols-2 gap-2 text-xs opacity-70">
-            <div>🌡️ 22°C Partly Cloudy</div>
-            <div>💧 Humidity 65%</div>
+            <div className="flex items-center justify-center gap-1.5">
+              <CloudSun className="w-3.5 h-3.5" strokeWidth={2} />
+              <span>22°C Partly Cloudy</span>
+            </div>
+            <div className="flex items-center justify-center gap-1.5">
+              <Droplets className="w-3.5 h-3.5" strokeWidth={2} />
+              <span>Humidity 65%</span>
+            </div>
           </div>
         </div>
       </div>
@@ -39,7 +54,7 @@ export default function Sidebar({ trending, loading, onSearch }) {
       {/* Trending */}
       <div className="bg-white dark:bg-surface-900 rounded-2xl overflow-hidden shadow-card">
         <div className="flex items-center gap-2 px-5 py-4 border-b border-surface-200 dark:border-ink-700">
-          <span className="text-base">🔥</span>
+          <Flame className="w-4 h-4 text-brand-red" strokeWidth={2} />
           <h3 className="font-heading text-xl tracking-wide text-ink-900 dark:text-ink-100">
             TRENDING
           </h3>
@@ -72,7 +87,7 @@ export default function Sidebar({ trending, loading, onSearch }) {
       {/* Topics */}
       <div className="bg-white dark:bg-surface-900 rounded-2xl p-5 shadow-card">
         <div className="flex items-center gap-2 mb-4">
-          <span>🏷️</span>
+          <Tags className="w-4 h-4 text-brand-red" strokeWidth={2} />
           <h3 className="font-heading text-xl tracking-wide text-ink-900 dark:text-ink-100">
             EXPLORE TOPICS
           </h3>
@@ -93,19 +108,30 @@ export default function Sidebar({ trending, loading, onSearch }) {
       {/* About */}
       <div className="bg-ink-900 dark:bg-black rounded-2xl p-5 text-white">
         <div className="flex items-center gap-2 mb-3">
-          <span className="text-2xl">🇳🇵</span>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-brand-gold">
+            <Newspaper className="w-5 h-5" strokeWidth={2.2} />
+          </div>
           <span className="font-heading text-2xl tracking-wider">NEPAL PATRA</span>
         </div>
         <p className="text-xs text-white/60 leading-relaxed">
           Nepal's premier digital newsroom. Delivering comprehensive, unbiased coverage of politics, business, culture, and society from the heart of the Himalayas.
         </p>
         <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-          {[["24/7", "Coverage"], ["🏔️", "Nepal Focus"], ["EN", "English"]].map(([val, label]) => (
+          {[
+            { value: "24/7", label: "Coverage" },
+            { icon: Mountain, label: "Nepal Focus" },
+            { icon: Languages, label: "English" },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
             <div key={label} className="bg-white/5 rounded-lg p-2">
-              <div className="text-brand-gold font-bold text-sm">{val}</div>
-              <div className="text-white/40 text-xs mt-0.5">{label}</div>
+              <div className="text-brand-gold font-bold text-sm flex justify-center">
+                {Icon ? <Icon className="w-4 h-4" strokeWidth={2} /> : item.value}
+              </div>
+              <div className="text-white/40 text-xs mt-0.5">{item.label}</div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </aside>

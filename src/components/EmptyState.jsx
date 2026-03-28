@@ -1,7 +1,11 @@
+import { Mountain, SearchX } from "lucide-react";
+
 export default function EmptyState({ search, onClear }) {
   return (
     <div className="flex flex-col items-center justify-center py-24 text-center animate-fade-in">
-      <div className="text-7xl mb-5">🏔️</div>
+      <div className="mb-5 rounded-full bg-surface-100 dark:bg-surface-900 p-5 text-brand-red">
+        {search ? <SearchX className="w-12 h-12" strokeWidth={1.8} /> : <Mountain className="w-12 h-12" strokeWidth={1.8} />}
+      </div>
       <h3 className="font-display text-2xl font-semibold text-ink-900 dark:text-ink-100 mb-2">
         No articles found
       </h3>

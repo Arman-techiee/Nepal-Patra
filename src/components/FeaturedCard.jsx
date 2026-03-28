@@ -1,4 +1,5 @@
 import { timeAgo, getDomain, getCategoryStyle, getCategoryLabel } from "../utils/helpers";
+import { ArrowRight, Bookmark, ImageOff } from "lucide-react";
 
 export default function FeaturedCard({ article, onBookmark, isBookmarked }) {
   if (!article) return null;
@@ -18,7 +19,9 @@ export default function FeaturedCard({ article, onBookmark, isBookmarked }) {
             onError={(e) => { e.target.style.display = "none"; }}
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-brand-blue via-brand-blue-light to-brand-red" />
+          <div className="w-full h-full bg-gradient-to-br from-brand-blue via-brand-blue-light to-brand-red flex items-center justify-center">
+            <ImageOff className="w-14 h-14 text-white/35" strokeWidth={1.8} />
+          </div>
         )}
 
         {/* Gradient overlay */}
@@ -38,9 +41,7 @@ export default function FeaturedCard({ article, onBookmark, isBookmarked }) {
                 : "bg-white/20 text-white hover:bg-white/40"
             }`}
           >
-            <svg className="w-4 h-4" fill={bookmarked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-            </svg>
+            <Bookmark className="w-4 h-4" strokeWidth={2} fill={bookmarked ? "currentColor" : "none"} />
           </button>
         </div>
 
@@ -75,9 +76,7 @@ export default function FeaturedCard({ article, onBookmark, isBookmarked }) {
               className="mt-5 inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-glow"
             >
               Read Full Story
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <ArrowRight className="w-4 h-4" strokeWidth={2} />
             </a>
           </div>
         </div>
