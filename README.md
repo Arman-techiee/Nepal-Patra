@@ -36,7 +36,7 @@ npm install
 ### 2. Configure environment variables
 
 ```bash
-cp .env.example .env
+cp .env
 ```
 
 Edit `.env` and add your API token:
