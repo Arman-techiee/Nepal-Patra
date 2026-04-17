@@ -109,7 +109,7 @@ export default function Footer({ setCategory }) {
           </div>
           <div className="flex gap-4">
             <a
-              href="https://github.com/Arman-techiee/Nepal-Patra.git"
+              href="https://github.com/armanroot/Nepal-Patra.git"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors inline-flex items-center gap-1.5"
@@ -130,3 +130,4 @@ export default function Footer({ setCategory }) {
     </footer>
   );
 }
+
